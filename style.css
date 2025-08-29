@@ -1,23 +1,22 @@
-/* - - - - - - - - - - - - - - - - - - - - - */
-/* - - IMPORT - - - - - - - - - - - - - */
+/* - - IMPORT - - */
 @import url("reset.css");
 @import url("utility.css");
 
 
-/* - - - - - - - - - - - - - - - - - - - - - */
-/* - - TYPOGRAPHIE - - - - - - - - - - - - - */
+/* - - TYPOGRAPHIE - - */
 h1 {
-  font-size: 12vw;
+  font-size: clamp(2rem, 8vw, 6rem);
+  margin: 0.2em 0; /* réduit l'espace vertical */
 }
 
 h2 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  margin: 0.5rem 0 1rem 0; /* rapproché des noms */
   text-align: center;
-  max-width: 25ch;
 }
 
 
-/* - - - - - - - - - - - - - - - - - - - - - */
-/* - - COLOR & BASE - - - - - - - - - - - - - */
+/* - - COLOR & BASE - - */
 * {
   box-sizing: border-box;
 }
@@ -25,24 +24,126 @@ h2 {
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
-  background: linear-gradient(red, blue);
-  color: beige;
+  background-color: #2b2b2b; /* Gris foncé */
+  color: white;
+  line-height: 1.6;
+}
 
+
+/* - - HEADER - - */
+header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 2rem;
 }
 
 
-/* - - - - - - - - - - - - - - - - - - - - - */
-/* - - MISE EN PAGE - - - - - - - - - - - - - */
-a {
-  color: inherit;
-  text-decoration: none; /* optionnel, selon le style voulu */
+/* - - NOM COMPLET - - */
+.nom-complet {
+  display: flex;
+  gap: 1rem; /* espace entre Godwin et Nyakossi-Kodjo */
+  justify-content: center;
+  align-items: center;
+}
+
+.nom-complet h1 {
+  margin: 0;
+}
+
+/* Rapprocher "Mon portfolio" des noms */
+header h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 
-/* - - - - - - - - - - - - - - - - - - - - - */
-/* - - MODULES - - - - - - - - - - - - - */
+/* - - LIEN INSTAGRAM - - */
+header p a {
+  display: inline-block;
+  background-color: #9146ff; /* Mauve type Twitch */
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9999px; /* bouton arrondi */
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+header p a:hover {
+  background-color: #7a2ee6; /* Mauve plus foncé au hover */
+  transform: scale(1.05);
+}
+
+
+/* - - NAVIGATION - - */
+nav {
+  margin-top: 2rem; /* espace sous le bouton Instagram */
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px; /* arrondi */
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+
+/* - - ANIMATIONS HEADER - - */
+header h1, header h2, header p a {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInUp 1s forwards;
+}
+
+header h1 {
+  animation-delay: 0.2s;
+}
+header h2 {
+  animation-delay: 0.4s;
+}
+header p a {
+  animation-delay: 0.6s;
+}
+
+/* Keyframes fadeInUp */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* - - ANIMATIONS SECTIONS - - */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
